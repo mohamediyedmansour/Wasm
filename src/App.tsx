@@ -1,8 +1,13 @@
+import { Box } from "@chakra-ui/react";
+import { Provider } from "@/components/ui/provider";
+
 function App() {
   return (
-    <>
-      <h1>tests</h1>
-    </>
+    <Provider>
+      <Box bg="bg.main" h="100vh">
+        Some text
+      </Box>
+    </Provider>
   );
 }
 
