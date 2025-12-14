@@ -1,10 +1,16 @@
+import { ThemeProvider } from "@mui/material";
+
 import Navbar from "./components/Navbar";
+import { ColorModeContext, useThemeMode } from "./utils/theme";
 
 function App() {
+  const { theme, colorMode } = useThemeMode();
   return (
-    <>
-      <Navbar />
-    </>
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <Navbar />
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 }
 

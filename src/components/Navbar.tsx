@@ -1,100 +1,41 @@
-import { useState } from "react";
 import {
+  Typography,
   AppBar,
   Toolbar,
-  Typography,
   IconButton,
-  Button,
-  Drawer,
-  List,
-  ListItem,
-  ListItemText,
+  Icon,
   Box,
+  useTheme,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
 
-const navItems = [
-  { label: "Home", path: "/" },
-  { label: "About", path: "/about" },
-  { label: "Services", path: "/services" },
-  { label: "Contact", path: "/contact" },
-];
+import { useContext } from "react";
+import { ColorModeContext } from "../utils/theme";
 
 const Navbar = () => {
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
-
-  // The content of the Drawer (Mobile Menu)
-  const drawerContent = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        Wfflpeg
-      </Typography>
-      <List>
-        <h1>button here</h1>
-      </List>
-    </Box>
-  );
+  const theme = useTheme();
+  const { toggleColorMode } = useContext(ColorModeContext);
 
   return (
-    <>
-      <AppBar position="static">
-        <Toolbar>
-          {/* 1. MOBILE MENU BUTTON (Hamburger) 
-              display: { xs: 'block', sm: 'none' } -> Shows on XS screens, hides on SM and up
-          */}
-          <IconButton
-            color="inherit"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-
-          {/* 2. LOGO / BRAND NAME */}
+    <AppBar position="static" sx={{ width: "100vw", overflowX: "hidden" }}>
+      <Toolbar disableGutters sx={{ px: 2 }}>
+        <Box sx={{ flexGrow: 1, display: "flex", alignItems: "center" }}>
+          <Icon>cached</Icon>
           <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "block", sm: "block" } }}
+            fontFamily={"BBH Bartle"}
+            fontSize={20}
+            marginLeft={"19px"}
           >
-            MY APP
+            WMMPEG
           </Typography>
+        </Box>
 
-          {/* 3. DESKTOP MENU ITEMS 
-              display: { xs: 'none', sm: 'block' } -> Hides on XS, shows on SM and up
-          */}
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            {navItems.map((item) => (
-              <Button key={item.label} sx={{ color: "#fff" }}>
-                {item.label}
-              </Button>
-            ))}
-          </Box>
-        </Toolbar>
-      </AppBar>
-
-      {/* 4. MOBILE DRAWER COMPONENT */}
-      <nav>
-        <Drawer
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": { boxSizing: "border-box", width: 240 },
-          }}
-        >
-          {drawerContent}
-        </Drawer>
-      </nav>
-    </>
+        <IconButton color="inherit" onClick={toggleColorMode} size="large">
+          <Icon>
+            {theme.palette.mode === "dark" ? "light_mode" : "dark_mode"}
+          </Icon>
+        </IconButton>
+      </Toolbar>
+    </AppBar>
   );
 };
 
