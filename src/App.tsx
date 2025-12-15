@@ -1,7 +1,9 @@
 import { ThemeProvider } from "@mui/material";
-
-import Navbar from "./components/Navbar";
 import { ColorModeContext, useThemeMode } from "./utils/theme";
+
+import { Navbar } from "./components/Navbar";
+import { Hero } from "./components/Hero";
+import { UploadBox } from "./components/UploadBox";
 
 function App() {
   const { theme, colorMode } = useThemeMode();
@@ -9,6 +11,8 @@ function App() {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <Navbar />
+        <Hero />
+        <UploadBox />
       </ThemeProvider>
     </ColorModeContext.Provider>
   );

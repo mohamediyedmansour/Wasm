@@ -2,7 +2,6 @@ import {
   Typography,
   AppBar,
   Toolbar,
-  IconButton,
   Icon,
   Box,
   useTheme,
@@ -11,7 +10,7 @@ import {
 import { useContext } from "react";
 import { ColorModeContext } from "../utils/theme";
 
-const Navbar = () => {
+export const Navbar = () => {
   const theme = useTheme();
   const { toggleColorMode } = useContext(ColorModeContext);
 
@@ -28,15 +27,13 @@ const Navbar = () => {
             WMMPEG
           </Typography>
         </Box>
-
-        <IconButton color="inherit" onClick={toggleColorMode} size="large">
+        {/*      <IconButton color="inherit" onClick={toggleColorMode} size="large">
           <Icon>
             {theme.palette.mode === "dark" ? "light_mode" : "dark_mode"}
           </Icon>
         </IconButton>
+  */}
       </Toolbar>
     </AppBar>
   );
 };
-
-export default Navbar;
