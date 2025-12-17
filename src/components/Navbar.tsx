@@ -27,12 +27,11 @@ export const Navbar = () => {
             WMMPEG
           </Typography>
         </Box>
-        {/*      <IconButton color="inherit" onClick={toggleColorMode} size="large">
+        <IconButton color="inherit" onClick={toggleColorMode} size="large">
           <Icon>
             {theme.palette.mode === "dark" ? "light_mode" : "dark_mode"}
           </Icon>
         </IconButton>
-  */}
       </Toolbar>
     </AppBar>
   );
